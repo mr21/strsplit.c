@@ -1,5 +1,9 @@
 # strsplit.c
 
+`strsplit()` cut a string into an array with a string delimiter.  
+The function is written to have only one `malloc` / `free` per call.  
+The array can be reordered or shrinked but its length can not be increased due to the original string which has been copied right after the last `NULL` pointer.
+
 ## Prototype
 ``` C
 char** strsplit( const char* s, const char* del );
