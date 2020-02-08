@@ -6,7 +6,7 @@ char** strsplit( const char* s, const char* delim ) {
 	void* data;
 	char* _s = ( char* )s;
 	const char** ptrs;
-	unsigned int
+	size_t
 		ptrsSize,
 		nbWords = 1,
 		sLen = strlen( s ),
