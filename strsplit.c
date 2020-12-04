@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-char** strsplit( const char* s, const char* delim ) {
+static char** _strsplit( const char* s, const char* delim, size_t* nb ) {
 	void* data;
 	char* _s = ( char* )s;
 	const char** ptrs;
@@ -31,5 +31,16 @@ char** strsplit( const char* s, const char* delim ) {
 		}
 		*++ptrs = NULL;
 	}
+	if ( nb ) {
+		*nb = data ? nbWords : 0;
+	}
 	return data;
+}
+
+char** strsplit( const char* s, const char* delim ) {
+	return _strsplit( s, delim, NULL );
+}
+
+char** strsplit_count( const char* s, const char* delim, size_t* nb ) {
+	return _strsplit( s, delim, nb );
 }

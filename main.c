@@ -28,13 +28,11 @@ static int comp( const void* a, const void* b ) {
 }
 
 static void testSort( const char* s, const char* delim ) {
-	char** arr = strsplit( s, delim );
+	size_t nbWords;
+	char** arr = strsplit_count( s, delim, &nbWords );
 
 	if ( arr ) {
-		int len = 0;
-
-		while ( arr[ len ] ) { ++len; }
-		qsort( arr, len, sizeof( *arr ), comp );
+		qsort( arr, nbWords, sizeof( *arr ), comp );
 		printTest( s, delim, arr );
 		free( arr );
 	}
