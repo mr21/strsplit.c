@@ -21,9 +21,10 @@ static void test( const char* s, const char* delim ) {
 }
 
 static int comp( const void* a, const void* b ) {
-	return strcmp(
-		( const char* )b,
-		( const char* )a );
+	const char* sa = *( const char** )a;
+	const char* sb = *( const char** )b;
+
+	return strcmp( sb, sa );
 }
 
 static void testSort( const char* s, const char* delim ) {
